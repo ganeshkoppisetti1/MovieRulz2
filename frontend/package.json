@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://movierulzg.onrender.com",
 
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
