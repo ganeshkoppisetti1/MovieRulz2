@@ -7,30 +7,16 @@ import ticketRoutes from "./routes/ticketRoutes.js";
 import authRoutes from "./routes/authRoutes.js"; 
 import showRoute from "./routes/showRoute.js";
 import bookingRoutes from "./routes/bookingRoutes.js";
-import cors from "cors";
+const cors = require("cors");
 
 dotenv.config();
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://movierulz2.netlify.app",
-  "https://sprightly-florentine-6af0ed.netlify.app",
-  "https://steady-beignet-d38893.netlify.app"
-];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // allow Postman, mobile apps
-
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS not allowed from this origin"));
-    }
-  },
-  credentials: true
+  origin: ["http://localhost:3000", "https://movierulz2.netlify.app"]
 }));
+
 
 
 app.use(express.json());   
