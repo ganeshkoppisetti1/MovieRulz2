@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -6,23 +6,19 @@ export default function MyBookings() {
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
   const [tickets, setTickets] = useState([]);
-  const fetched = useRef(false);
 
-  const fetchTickets = async () => {
+  const fetchTickets = useCallback(async () => {
     try {
       const res = await axios.get(`http://localhost:5000/api/tickets/my/${userId}`);
       setTickets(res.data.tickets);
     } catch (err) {
       console.error("Error fetching tickets:", err);
     }
-  };
+  }, [userId]);
 
   useEffect(() => {
-    if (!fetched.current) {
-      fetched.current = true;
-      fetchTickets();
-    }
-  }, []);
+    fetchTickets();
+  }, [fetchTickets]);
 
   const cancelTicket = async (id) => {
     if (!window.confirm("Cancel this booking?")) return;

@@ -11,6 +11,7 @@ import Payment from "./pages/Payment";
 import MyBookings from "./pages/MyBookings";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Seats from "./pages/Seats";
 
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/my-bookings" element={<MyBookings />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/seats" element={<Seats/>}/>
 
         
       </Routes>

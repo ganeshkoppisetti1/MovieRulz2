@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -11,7 +11,7 @@ export default function SeatSelection() {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [bookedSeats, setBookedSeats] = useState([]);
 
-  const fetchShow = async () => {
+  const fetchShow = useCallback(async () => {
     try {
       const res = await axios.get(`http://localhost:5000/api/shows/show/${showId}`);
       setShow(res.data);
@@ -21,11 +21,11 @@ export default function SeatSelection() {
     } catch (err) {
       console.error("Fetch show error:", err);
     }
-  };
+  }, [showId]);
 
   useEffect(() => {
     fetchShow();
-  }, [showId]);
+  }, [fetchShow]);
 
   const toggleSeat = (seatNumber) => {
     if (bookedSeats.includes(seatNumber)) return;

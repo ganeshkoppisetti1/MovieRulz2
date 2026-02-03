@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { QRCodeCanvas } from "qrcode.react";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import axios from "axios";
 
 export default function Ticket() {
@@ -13,10 +13,9 @@ export default function Ticket() {
 
   const finalAmount = amount ?? seats?.length * 200;
 
-  useEffect(() => {
-  if (!movie || !paymentId) return; // ✅ only save after paymentId exists
+  const saveTicket = useCallback(async () => {
+    if (!movie || !paymentId) return;
 
-  const saveTicket = async () => {
     try {
       await axios.post("http://localhost:5000/api/tickets/save", {
         userId,
@@ -33,11 +32,11 @@ export default function Ticket() {
     } catch (err) {
       console.error("Ticket save failed:", err);
     }
-  };
+  }, [movie, paymentId, userId, seats, showTime, theatre, finalAmount]);
 
-  saveTicket();
-}, [movie, paymentId]); // ✅ dependency array ensures it only runs once after movie & paymentId
-
+  useEffect(() => {
+    saveTicket();
+  }, [saveTicket]);
 
   if (!movie) return <p style={{ textAlign: "center" }}>Ticket not found</p>;
 
