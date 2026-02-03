@@ -14,13 +14,14 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: "https://movierulz2.netlify.app", // your frontend URL
+  origin: "*",
   credentials: true
 }));
 
-app.use(express.json());   // JSON body parser
 
-app.use("/uploads", express.static("uploads")); // serve images
+app.use(express.json());   
+
+app.use("/uploads", express.static("uploads")); 
 
 connectDB();
 
