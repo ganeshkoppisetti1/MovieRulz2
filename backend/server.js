@@ -9,11 +9,8 @@ import authRoutes from "./routes/authRoutes.js";
 import showRoute from "./routes/showRoute.js";
 import bookingRoutes from "./routes/bookingRoutes.js";
 
-
 dotenv.config();
 const app = express();
-
-import cors from "cors";
 
 app.use(cors({
   origin: [
@@ -23,10 +20,7 @@ app.use(cors({
   credentials: true
 }));
 
-
-
 app.use(express.json());   
-
 app.use("/uploads", express.static("uploads")); 
 
 connectDB();
@@ -37,7 +31,6 @@ app.use("/api/tickets", ticketRoutes);
 app.use("/api/auth", authRoutes); 
 app.use("/api/shows", showRoute);
 app.use("/api/bookings", bookingRoutes);
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
