@@ -13,10 +13,16 @@ import bookingRoutes from "./routes/bookingRoutes.js";
 dotenv.config();
 const app = express();
 
+import cors from "cors";
+
 app.use(cors({
-  origin: "*",
+  origin: [
+    "https://sprightly-florentine-6af0ed.netlify.app",
+    "https://movierulz2.netlify.app"
+  ],
   credentials: true
 }));
+
 
 
 app.use(express.json());   
