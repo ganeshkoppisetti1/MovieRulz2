@@ -13,10 +13,20 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: [
-    "https://sprightly-florentine-6af0ed.netlify.app",
-    "https://movierulz2.netlify.app"
-  ],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      "https://movierulz2.netlify.app",
+      "https://zingy-starlight-896979.netlify.app",
+      "https://steady-beignet-d38893.netlify.app"
+    ];
+
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
