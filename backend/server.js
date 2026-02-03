@@ -13,7 +13,11 @@ import bookingRoutes from "./routes/bookingRoutes.js";
 dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://movierulz2.netlify.app", // your frontend URL
+  credentials: true
+}));
+
 app.use(express.json());   // JSON body parser
 
 app.use("/uploads", express.static("uploads")); // serve images

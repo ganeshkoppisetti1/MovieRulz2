@@ -13,10 +13,10 @@ export default function SeatSelection() {
 
   const fetchShow = useCallback(async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/shows/show/${showId}`);
+      const res = await axios.get(`https://movierulz2.onrender.com/api/shows/show/${showId}`);
       setShow(res.data);
 
-      const bookedRes = await axios.get(`http://localhost:5000/api/bookings/booked-seats/${showId}`);
+      const bookedRes = await axios.get(`https://movierulz2.onrender.com/api/bookings/booked-seats/${showId}`);
       setBookedSeats(bookedRes.data.bookedSeats);
     } catch (err) {
       console.error("Fetch show error:", err);

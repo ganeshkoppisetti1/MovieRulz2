@@ -17,7 +17,7 @@ export default function Ticket() {
     if (!movie || !paymentId) return;
 
     try {
-      await axios.post("http://localhost:5000/api/tickets/save", {
+      await axios.post("https://movierulz2.onrender.com/api/tickets/save", {
         userId,
         movieId: movie._id,
         movieTitle: movie.title,
