@@ -13,10 +13,10 @@ export default function SeatSelection() {
 
   const fetchShow = useCallback(async () => {
     try {
-      const res = await axios.get(`https://movierulz2.onrender.com/api/shows/show/${showId}`);
+      const res = await axios.get(`https://movierulzg.onrender.com/api/shows/show/${showId}`);
       setShow(res.data);
 
-      const bookedRes = await axios.get(`https://movierulz2.onrender.com/api/bookings/booked-seats/${showId}`);
+      const bookedRes = await axios.get(`https://movierulzg.onrender.com/api/bookings/booked-seats/${showId}`);
       setBookedSeats(bookedRes.data.bookedSeats);
     } catch (err) {
       console.error("Fetch show error:", err);
@@ -50,7 +50,7 @@ export default function SeatSelection() {
 
       if (!selectedSeats.length) return;
 
-      await axios.post("https://movierulz2.onrender.com/api/bookings", {
+      await axios.post("https://movierulzg.onrender.com/api/bookings", {
         userId,
         movieId: movie._id,
         showId,

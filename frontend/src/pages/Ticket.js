@@ -17,7 +17,7 @@ export default function Ticket() {
     if (!movie || !paymentId) return;
 
     try {
-      await axios.post("https://movierulz2.onrender.com/api/tickets/save", {
+      await axios.post("https://movierulzg.onrender.com/api/tickets/save", {
         userId,
         movieId: movie._id,
         movieTitle: movie.title,
@@ -86,7 +86,7 @@ export default function Ticket() {
         }}
       >
         <img
-          src={`https://movierulz2.onrender.com${movie.poster}`}
+          src={`https://movierulzg.onrender.com${movie.poster}`}
           alt={movie.title}
           style={{ width: "100%", borderRadius: "8px" }}
         />
