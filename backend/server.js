@@ -7,14 +7,13 @@ import ticketRoutes from "./routes/ticketRoutes.js";
 import authRoutes from "./routes/authRoutes.js"; 
 import showRoute from "./routes/showRoute.js";
 import bookingRoutes from "./routes/bookingRoutes.js";
-const cors = require("cors");
-
+import cors from 'cors'
 dotenv.config();
 const app = express();
 
 
 app.use(cors({
-  origin: ["http://localhost:3000", "https://movierulz2.netlify.app"]
+  origin: ["http://localhost:3000", "https://steady-beignet-d38893.netlify.app"]
 }));
 
 
