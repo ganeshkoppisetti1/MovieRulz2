@@ -50,7 +50,7 @@ export default function SeatSelection() {
 
       if (!selectedSeats.length) return;
 
-      await axios.post("http://localhost:5000/api/bookings", {
+      await axios.post("https://movierulz2.onrender.com/api/bookings", {
         userId,
         movieId: movie._id,
         showId,

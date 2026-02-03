@@ -6,7 +6,7 @@ export default function MovieCard({ movie }) {
   return (
     <div className="movie-card" onClick={() => navigate(`/movie/${movie._id}`, { state: { movie } })}>
       <img
-        src={`http://localhost:5000${movie.poster}`}
+        src={`https://movierulz2.onrender.com${movie.poster}`}
         alt={movie.title}
         style={{ width: "150px", height: "220px", objectFit: "cover" }}
       />
