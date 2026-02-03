@@ -1,4 +1,3 @@
-// pages/Login.js
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -14,10 +13,10 @@ export default function Login() {
     try {
       const res = await axios.post("https://movierulzg.onrender.com/api/auth/login", { email, password });
       if (res.data.success) {
-        // Save user info in localStorage
+        
         localStorage.setItem("userId", res.data.user._id);
         localStorage.setItem("userName", res.data.user.name);
-        navigate("/"); // redirect to home
+        navigate("/"); 
       } else {
         setMessage(res.data.message || "Login failed");
       }
@@ -68,10 +67,10 @@ export default function Login() {
         </button>
       </form>
 
-      {/* Error message */}
+      
       {message && <p style={{ color: "red", textAlign: "center" }}>{message}</p>}
 
-      {/* Register button */}
+      
       <p style={{ textAlign: "center", marginTop: "15px" }}>
         Don't have an account?{" "}
         <button
