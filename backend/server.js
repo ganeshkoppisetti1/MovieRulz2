@@ -1,5 +1,4 @@
 import express from "express";
-import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import movieRoutes from "./routes/movieRoutes.js";
@@ -8,27 +7,31 @@ import ticketRoutes from "./routes/ticketRoutes.js";
 import authRoutes from "./routes/authRoutes.js"; 
 import showRoute from "./routes/showRoute.js";
 import bookingRoutes from "./routes/bookingRoutes.js";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://movierulz2.netlify.app",
+  "https://sprightly-florentine-6af0ed.netlify.app",
+  "https://steady-beignet-d38893.netlify.app"
+];
+
 app.use(cors({
   origin: function (origin, callback) {
-    const allowedOrigins = [
-      "https://movierulz2.netlify.app",
-      "https://zingy-starlight-896979.netlify.app",
-      "https://steady-beignet-d38893.netlify.app"
-    ];
+    if (!origin) return callback(null, true); // allow Postman, etc.
 
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
     }
   },
-  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
 
 app.use(express.json());   
 app.use("/uploads", express.static("uploads")); 
