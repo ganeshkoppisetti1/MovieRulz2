@@ -3,7 +3,7 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { QRCodeCanvas } from "qrcode.react";
 import { useEffect, useCallback } from "react";
-import axios from "axios";
+import api from "../api";
 
 export default function Ticket() {
   const { state } = useLocation();
@@ -17,7 +17,7 @@ export default function Ticket() {
     if (!movie || !paymentId) return;
 
     try {
-      await axios.post("https://movierulzg.onrender.com/api/tickets/save", {
+      await api.post("/api/tickets/save", {
         userId,
         movieId: movie._id,
         movieTitle: movie.title,
