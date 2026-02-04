@@ -14,11 +14,13 @@ const app = express();
 app.use(
   cors({
     origin: [
+      "http://localhost:3000",
       "https://movierulzp.netlify.app"
     ],
     credentials: true,
   })
 );
+
 
 
 
