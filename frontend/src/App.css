@@ -1,26 +1,19 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-
+/* page container */
 .container {
   min-height: 100vh;
   background: #0f0f0f;
   color: #ffffff;
-  padding: 10px 16px 20px;
-  max-width: 1400px;
-  margin: auto;
+  padding: 10px 25px 25px;
+  transition: background 0.3s, color 0.3s;
 }
 
-
+/* light mode */
 .container.light {
   background: #636060;
   color: #111111;
 }
 
-
+/* header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -29,15 +22,15 @@
   flex-wrap: wrap;
 }
 
-
+/* left side: logo only */
 .left-section {
   display: flex;
   align-items: center;
   gap: 7px;
-  flex: 0;  
+  flex: 0;  /* fixed size for logo */
 }
 
-
+/* app logo */
 .logo {
   color: red;
   font-size: 25px;
@@ -45,13 +38,15 @@
   white-space: nowrap;
 }
 
+/* right side: search + location + dark mode + signup/signin */
 
 
+/* bigger search input */
 .search-input {
-  flex: 0.5;           
-  min-width: 250px;    
-  max-width: 400px;    
-  padding: 8px 25px;   
+  flex: 0.5;           /* larger width */
+  min-width: 250px;    /* minimum width */
+  max-width: 400px;    /* maximum width */
+  padding: 8px 25px;   /* bigger padding */
   border-radius: 6px;
   border: none;
   outline: none;
@@ -62,7 +57,10 @@
   border: 1px solid #cccccc;
 }
 
+/* location box */
 
+
+/* Location Box */
 .location-box {
   display: flex;
   align-items: center;
@@ -95,10 +93,10 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-
+/* Location Icon */
 .location-icon {
   font-size: 13px;
-  color: #00ff7f; 
+  color: #00ff7f; /* neon accent */
   transition: color 0.2s ease;
 }
 
@@ -106,7 +104,7 @@
   color: #00d67a;
 }
 
-
+/* Location Dropdown */
 .location-select {
   background-color: #0f172a;
   border: none;
@@ -132,6 +130,7 @@
   background-color: #d0d0d0;
 }
 
+/* Dark/Light Toggle Button */
 .toggle-btn {
   background: #1e1e1e;
   border: none;
@@ -167,6 +166,7 @@
 
 
 
+/* signup/signin button */
 .signin-btn, .signup-btn {
   background: #e50914;
   border: none;
@@ -182,10 +182,12 @@
   opacity: 0.9;
 }
 
+/* section title */
 h2 {
   margin: 20px 0 15px;
 }
 
+/* movie grid */
 
 
 
@@ -196,6 +198,9 @@ h2 {
 
 
 
+/* ===== Movie Card Styling ===== */
+/* Movie Slider Container */
+/* ===== Slider Container ===== */
 .movie-slider-container {
   position: relative;
   margin: 40px 0;
@@ -203,19 +208,20 @@ h2 {
   overflow: visible;
 }
 
+/* ===== Slider Row ===== */
 .movie-slider {
   display: flex;
   gap: 22px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 0 16px;
+  padding: 0 70px;
 }
-
 
 .movie-slider::-webkit-scrollbar {
   display: none;
 }
 
+/* ===== Arrows ===== */
 .slider-arrow {
   position: absolute;
   top: 50%;
@@ -255,6 +261,7 @@ h2 {
 
 
 
+/* ===== Movie Card ===== */
 .movie-card {
   width: 170px;
   background: #111;
@@ -276,9 +283,8 @@ h2 {
   height: 220px;
   border-radius: 10px;
   object-fit: cover;
-  object-position: center top; 
+  object-position: center top; /* shifts crop upward */
   margin-bottom: 8px;
-  aspect-ratio: 2 / 3;
 }
 
 
@@ -411,18 +417,22 @@ h2 {
 
 
 
+/* Header buttons */
+/* Container for username and buttons */
+/* Container */
 .user-actions {
-  display: flex;        
-  flex-direction: row;  
-  gap: 10px;            
-  align-items: center;  
+  display: flex;        /* make it horizontal */
+  flex-direction: row;  /* ensure horizontal layout */
+  gap: 10px;            /* spacing between buttons */
+  align-items: center;  /* vertical alignment */
 }
+/* Common Button Styles */
 .left-section button {
   padding: 6px 14px;
   font-size: 0.85rem;
   font-weight: 600;
   border: none;
-  border-radius: 50px; 
+  border-radius: 50px; /* pill-shaped buttons */
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -430,6 +440,7 @@ h2 {
   overflow: hidden;
 }
 
+/* Hover Glow Effect */
 .left-section button::after {
   content: "";
   position: absolute;
@@ -446,6 +457,7 @@ h2 {
   left: 125%;
 }
 
+/* My Bookings Button */
 .left-section .mybookings-btn {
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: #fff;
@@ -456,6 +468,7 @@ h2 {
   box-shadow: 0 6px 20px rgba(42, 59, 255, 0.4);
 }
 
+/* Logout Button */
 .left-section .logout-btn {
   background: linear-gradient(135deg, #ff416c, #ff4b2b);
   color: #fff;
@@ -466,12 +479,14 @@ h2 {
   box-shadow: 0 6px 20px rgba(255, 75, 43, 0.4);
 }
 
-
+/* Sign In Button */
+/* Sign In Button - Square Style */
+/* Sign In Button - Green Rectangle */
 .left-section .signin-btn {
   background: #2ecc71;
   color: #fff;
   border: none;
-  border-radius: 6px; 
+  border-radius: 6px; /* rectangle shape */
   box-shadow: none;
   padding: 6px 16px;
   margin-left: 30px;
@@ -484,14 +499,16 @@ h2 {
 }
 
 .left-section .signin-btn {
-  white-space: nowrap; 
+  white-space: nowrap; /* prevents text from breaking into two lines */
 }
 
 
+/* Optional Text Shadow for Buttons */
 .left-section button {
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
+/* Responsive */
 @media (max-width: 900px) {
   .left-section {
     flex-direction: column;
@@ -610,6 +627,7 @@ h2 {
 
 
 
+/* Container */
 .container3 {
   min-height: 100vh;
   display: flex;
@@ -622,6 +640,7 @@ h2 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Headings */
 .container3 h2 {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -630,6 +649,7 @@ h2 {
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
+/* Form */
 form {
   background: #111827;
   padding: 25px;
@@ -642,6 +662,7 @@ form {
   gap: 15px;
 }
 
+/* Inputs */
 form input {
   padding: 12px 15px;
   border-radius: 8px;
@@ -658,6 +679,7 @@ form input:focus {
   box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
 }
 
+/* Submit Button */
 form button[type="submit"] {
   background: linear-gradient(135deg, #22c55e, #16a34a);
   color: #fff;
@@ -675,6 +697,7 @@ form button[type="submit"]:hover {
   box-shadow: 0 6px 16px rgba(34, 197, 94, 0.5);
 }
 
+/* Error Message */
 .container3 p[style*="color: red"] {
   color: #f87171;
   font-weight: 500;
@@ -682,6 +705,7 @@ form button[type="submit"]:hover {
   text-align: center;
 }
 
+/* Register Button in Text */
 .container3 p button {
   background: #22c55e;
   color: #fff;
@@ -698,6 +722,7 @@ form button[type="submit"]:hover {
   box-shadow: 0 4px 12px rgba(34, 197, 94, 0.5);
 }
 
+/* Responsive */
 @media (max-width: 500px) {
   form {
     padding: 20px;
@@ -755,7 +780,7 @@ form button[type="submit"]:hover {
 
 .username1 {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column; /* Stack icon and name vertically */
   align-items: center;
   width: 30px;             
   padding: 4px 6px;
@@ -768,29 +793,32 @@ form button[type="submit"]:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   cursor: default;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  overflow: hidden;       
+  overflow: hidden;        /* Hide overflow */
 }
 
 
 
+/* User icon on top */
 .username1::before {
   font-size: 16px;
   margin-bottom: 2px;
 }
 
+/* Name below the icon - truncate if too long */
 .username1 span {
   display: block;
   width: 100%;
-  white-space: nowrap;       
-  overflow: hidden;          
-  text-overflow: ellipsis;   
+  white-space: nowrap;       /* Keep single line */
+  overflow: hidden;          /* Hide overflow */
+  text-overflow: ellipsis;   /* Add ... */
   font-size: 12px;
 
-  direction: rtl;            
-  text-align: left;          
+  direction: rtl;            /* Start truncation (hide beginning) */
+  text-align: left;          /* Keep text aligned left */
 }
 
 
+/* Light mode */
 .container.light .username1 {
   background-color: #e6e6e6;
   color: #111111;
@@ -832,15 +860,15 @@ form button[type="submit"]:hover {
 }
 
 .seat.available {
-  background-color: #ccc; 
+  background-color: #ccc; /* ⚪ available */
 }
 
 .seat.selected {
-  background-color: green; 
+  background-color: green; /* 🟢 selected */
 }
 
 .seat.booked {
-  background-color: red;   
+  background-color: red;   /* 🔴 booked */
   cursor: not-allowed;
 }
 
@@ -853,8 +881,3 @@ form button[type="submit"]:hover {
   border-radius: 6px;
   cursor: pointer;
 }
-
-
-
-
-
