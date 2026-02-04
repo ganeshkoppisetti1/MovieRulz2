@@ -11,16 +11,7 @@ import cors from 'cors'
 dotenv.config();
 const app = express();
 
-
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://steady-beignet-d38893.netlify.app",
-];
-
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true,
-}));
+app.use(cors());
 
 
 app.use(express.json());   
