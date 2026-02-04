@@ -1,7 +1,6 @@
 // pages/Home.js
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import MovieCard from "../components/MovieCard.js";
 import Banner from "../components/Banner.js";
 import MovieSlider from "./MovieSlider.js";
