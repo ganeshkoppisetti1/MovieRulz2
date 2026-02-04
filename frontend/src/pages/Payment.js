@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Payment() {
   const location = useLocation();
@@ -13,10 +14,9 @@ export default function Payment() {
   // 🔹 Check login
   const userId = localStorage.getItem("userId");
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     if (!userId) {
       alert("Please sign in to make payment!");
-
       navigate("/login", {
         state: {
           redirectAfterLogin: "/payment",
@@ -31,19 +31,38 @@ export default function Payment() {
     const paymentId = "PAY" + Date.now();
     const amount = seats.length * 200;
 
-    alert("Payment Successful 🎉");
-
-    navigate("/ticket", {
-      state: {
-        movie,
+    try {
+      // ✅ SAVE BOOKING TO BACKEND
+      await axios.post("https://movierulz2.onrender.com/api/tickets/book", {
+        userId,
+        movieId: movie._id,
+        movieTitle: movie.title,
+        poster: movie.poster,
         seats,
-        paymentId,
+        amount,
         showTime: "6:00 PM",
         theatre: "PVR Cinemas",
-        amount,
+        paymentId,
         status: "Booked",
-      },
-    });
+      });
+
+      alert("Payment Successful 🎉");
+
+      navigate("/ticket", {
+        state: {
+          movie,
+          seats,
+          paymentId,
+          showTime: "6:00 PM",
+          theatre: "PVR Cinemas",
+          amount,
+          status: "Booked",
+        },
+      });
+    } catch (error) {
+      console.error("Booking save failed:", error);
+      alert("Payment succeeded but booking could not be saved!");
+    }
   };
 
   return (
