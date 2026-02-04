@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import api from "../utils/api";
 
 export default function MyBookings() {
   const navigate = useNavigate();
@@ -8,11 +8,9 @@ export default function MyBookings() {
   const [tickets, setTickets] = useState([]);
 
   const fetchTickets = useCallback(async () => {
-    if (!userId) return;
-
     try {
-      const res = await api.get(`/api/tickets/my/${userId}`);
-      setTickets(res.data.tickets || res.data || []);
+      const res = await axios.get(`https://movierulz2.onrender.com/api/tickets/my/${userId}`);
+      setTickets(res.data.tickets);
     } catch (err) {
       console.error("Error fetching tickets:", err);
     }
@@ -26,12 +24,10 @@ export default function MyBookings() {
     if (!window.confirm("Cancel this booking?")) return;
 
     try {
-      await api.put(`/api/tickets/cancel/${id}`);
-      setTickets(prev =>
-        prev.map(t =>
-          t._id === id ? { ...t, status: "Cancelled" } : t
-        )
-      );
+      await axios.put(`https://movierulz2.onrender.com/api/tickets/cancel/${id}`);
+      setTickets(tickets.map(t =>
+        t._id === id ? { ...t, status: "Cancelled" } : t
+      ));
       alert("Booking cancelled successfully!");
     } catch (err) {
       console.error("Cancel failed:", err);
@@ -51,21 +47,15 @@ export default function MyBookings() {
 
       {tickets.map(ticket => (
         <div key={ticket._id} className="booking-card">
-          <img
-            src={`https://movierulzg.onrender.com${ticket.poster}`}
-            alt={ticket.movieTitle}
-          />
+          <img src={`https://movierulz2.onrender.com${ticket.poster}`} alt={ticket.movieTitle} />
 
           <div className="booking-info">
             <h3>{ticket.movieTitle}</h3>
             <p><strong>Seats:</strong> {ticket.seats.join(", ")}</p>
             <p><strong>Time:</strong> {ticket.showTime}</p>
-
             <p>
               <strong>Status:</strong>{" "}
-              <span className={ticket.status === "Cancelled"
-                ? "status-cancelled"
-                : "status-booked"}>
+              <span className={ticket.status === "Cancelled" ? "status-cancelled" : "status-booked"}>
                 {ticket.status}
               </span>
             </p>
@@ -75,6 +65,7 @@ export default function MyBookings() {
                 className="view-btn"
                 disabled={ticket.status === "Cancelled"}
                 onClick={() =>
+                  ticket.status !== "Cancelled" &&
                   navigate("/ticket", {
                     state: {
                       movie: {
@@ -92,9 +83,7 @@ export default function MyBookings() {
                   })
                 }
               >
-                {ticket.status === "Cancelled"
-                  ? "Ticket Cancelled ❌"
-                  : "View Ticket"}
+                {ticket.status === "Cancelled" ? "Ticket Cancelled ❌" : "View Ticket"}
               </button>
 
               {ticket.status === "Booked" && (

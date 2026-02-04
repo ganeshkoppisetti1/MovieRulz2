@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import api from "../api";
+import api from "../utils/api";
 
 export default function SeatSelection() {
   const location = useLocation();

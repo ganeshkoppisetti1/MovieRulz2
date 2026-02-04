@@ -3,7 +3,7 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { QRCodeCanvas } from "qrcode.react";
 import { useEffect, useCallback } from "react";
-import api from "../api";
+import api from "../utils/api";
 
 export default function Ticket() {
   const { state } = useLocation();
