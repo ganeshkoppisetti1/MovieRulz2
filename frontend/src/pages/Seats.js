@@ -5,6 +5,8 @@ export default function Seats() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [selectedSeats, setSelectedSeats] = useState([]); // ✅ Move hook to top
+
   // 🔹 Safety check (refresh issue avoid)
   const { movie, tickets } = location.state || {};
 
@@ -14,8 +16,6 @@ export default function Seats() {
 
   const rows = 5;
   const cols = 6;
-
-  const [selectedSeats, setSelectedSeats] = useState([]);
 
   // 🔹 Seat select / unselect
   const toggleSeat = (seatNumber) => {
