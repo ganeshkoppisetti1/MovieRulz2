@@ -23,7 +23,7 @@ export default function AddMovie() {
     formData.append("banner", banner);
 
     try {
-      const res = await axios.post("https://movierulzg.onrender.com/api/movies", formData, {
+      const res = await axios.post("https://movierulz2.onrender.com/api/movies", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

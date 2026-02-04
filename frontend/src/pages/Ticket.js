@@ -86,7 +86,7 @@ export default function Ticket() {
         }}
       >
         <img
-          src={`https://movierulzg.onrender.com${movie.poster}`}
+          src={`https://movierulz2.onrender.com${movie.poster}`}
           alt={movie.title}
           style={{ width: "100%", borderRadius: "8px" }}
         />
